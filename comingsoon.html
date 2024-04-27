@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4f6; /* Set background color */
+            font-family: Arial, sans-serif; /* Set font family */
+        }
+
+        .container {
+            max-width: 600px; /* Set maximum width of container */
+            margin: 0 auto; /* Center align container */
+            padding: 50px; /* Add padding around container */
+            text-align: center; /* Center align text */
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Set font size of heading */
+            color: #4b5563; /* Set color of heading */
+        }
+
+        p {
+            font-size: 1.25rem; /* Set font size of paragraph */
+            color: #6b7280; /* Set color of paragraph */
+            margin-bottom: 30px; /* Add margin at the bottom */
+        }
+
+        .btn {
+            display: inline-block; /* Display as inline block */
+            padding: 10px 20px; /* Add padding to button */
+            font-size: 1rem; /* Set font size of button */
+            background-color: #3b82f6; /* Set background color of button */
+            color: #fff; /* Set text color of button */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border radius */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        .btn:hover {
+            background-color: #2563eb; /* Change background color on hover */
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #4b5563; /* Set background color of navbar */
+            padding: 10px; /* Add padding to navbar */
+            display: flex; /* Set display to flex */
+            justify-content: space-between; /* Align items with space between */
+            align-items: center; /* Align items to the center */
+        }
+
+        .navbar-brand {
+            color: #fff; /* Set text color of brand */
+            font-size: 1.5rem; /* Set font size of brand */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .nav-menu {
+            display: none; /* Hide menu by default */
+        }
+
+        .nav-menu.active {
+            display: flex; /* Display menu when active */
+            flex-direction: column; /* Arrange menu items in a column */
+            position: absolute; /* Position menu absolutely */
+            top: 70px; /* Align menu below navbar */
+            left: 0; /* Align menu to the left */
+            background-color: #4b5563; /* Set background color of menu */
+            width: 100%; /* Set width to full */
+            padding: 10px; /* Add padding to menu */
+            z-index: 1; /* Set z-index to appear above other elements */
+        }
+
+        .nav-menu-item {
+            margin-bottom: 10px; /* Add margin between menu items */
+        }
+
+        .nav-menu-link {
+            color: #fff; /* Set text color of menu items */
+            text-decoration: none; /* Remove underline */
+            font-size: 1rem; /* Set font size of menu items */
+            transition: color 0.3s; /* Add transition effect */
+        }
+
+        .nav-menu-link:hover {
+            color: #cbd5e0; /* Change text color on hover */
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: block; /* Display as block */
+            cursor: pointer; /* Change cursor to pointer */
+            background: none; /* Remove background */
+            border: none; /* Remove border */
+            outline: none; /* Remove outline */
+            color: #fff; /* Set text color */
+            font-size: 1.5rem; /* Set font size */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar component -->
+    <div id="navbar-placeholder">
+        <nav class="bg-gray-800 p-4 flex">
+            <div class="container mx-auto ">
+                <div class="flex justify-between items-center">
+
+                    <a href="/" class="text-white text-xl font-semibold">Website for question papers</a>
+
+                    <!-- Menu button for mobile -->
+                    <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+
+                <ul id="nav-links" class="hidden flex flex-col items-end">
+                    <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">English Papers</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">Assamese Papers</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">Chemistry Papers</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">Physics Papers</a></li>
+                    <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other Papers</a></li>
+                </ul>
+            </div>
+            <ul id="nav-links-desktop" class="hidden md:flex flex-col md:flex-row md:space-x-4">
+                <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">English</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Assamese</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Chemistry</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Physics</a></li>
+                <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other</a></li>
+            </ul>
+
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>Question papers will available after I got the papers and exams</p>
+        <a href="/" class="btn">Go to Home</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            // Add event listener to the menu button
+            menuBtn.addEventListener("click", function () {
+                // Toggle the visibility of the navigation links
+                navLinks.classList.toggle("hidden");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

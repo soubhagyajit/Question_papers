@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for menu button */
+        #menu-btn svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    </style>
+    
+</head>
+
+<body class="font-sans">
+
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto ">
+            <div class="flex justify-between items-center">
+
+                <a href="/" class="text-white text-xl font-semibold">Website for question papers</a>
+                
+                <!-- Menu button for mobile -->
+                <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+            <ul id="nav-links-desktop" class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">Home</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">About</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">Services</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">Contact</a></li>
+            </ul>
+            <ul id="nav-links" class="hidden flex flex-col items-end">
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">Home</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">About</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">Services</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 my-5">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+
+</html>

@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other Question Papers</title>
+    <title>View Question Paper</title>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-100 font-sans">
-    <!-- Navbar HTML -->
+    
     <div id="navbar-placeholder">
         <nav class="bg-gray-800 p-4 flex">
             <div class="container mx-auto ">
@@ -50,7 +50,7 @@
 
         </nav>
     </div>
-
+    
     <!-- Include JavaScript for navbar -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -64,22 +64,65 @@
             });
         });
     </script>
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">View Question Paper</h1>
 
-    <div class="container mx-auto p-8 overflow-x-hidden">
-        <h1 class="text-3xl font-bold text-center mb-8">Other Question Papers</h1>
+        <div id="image-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-white shadow-md rounded-md p-4">
-                <a href="/view.html?path=/other_exams/organic&totalImages=2"
-                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Organic</a>
-                <p class="text-gray-600">Download Organic question paper (Class 11)</p>
-            </div>
-            <div class="bg-white shadow-md rounded-md p-4">
-                <a href="/view.html?path=/other_exams/literature&totalImages=3"
-                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Literature</a>
-                <p class="text-gray-600">Download literature question paper</p>
-            </div>
-        </div>
+        <script>
+            // Function to extract query parameter from URL
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Function to generate image file names based on total images expected
+            function generateImageFileNames(totalImages) {
+                const imageFileNames = [];
+                for (let i = 1; i <= totalImages; i++) {
+                    imageFileNames.push(i + '.jpg');
+                }
+                return imageFileNames;
+            }
+
+            // Function to display images
+            function displayImages(images) {
+                // Reference to the image container
+                const imageContainer = document.getElementById("image-container");
+
+                // Loop through the images array and create HTML elements for each image
+                images.forEach(image => {
+                    // Create a div element for each image
+                    const div = document.createElement("div");
+                    div.classList.add("bg-white", "shadow-md", "rounded-md", "p-4");
+
+                    // Create an img element for the image
+                    const img = document.createElement("img");
+                    img.src = image;
+                    img.alt = "Question Paper";
+                    img.classList.add("mx-auto");
+
+                    // Append the img element to the div element
+                    div.appendChild(img);
+
+                    // Append the div element to the image container
+                    imageContainer.appendChild(div);
+                });
+            }
+
+            // Get the path and totalImages from the URL query parameters
+            const path = getQueryParam("path");
+            const totalImages = parseInt(getQueryParam("totalImages")) || 0; // Default to 0 if totalImages parameter is not provided
+            console.log("Path from URL:", path); // Debugging statement
+            console.log("Total images from URL:", totalImages); // Debugging statement
+
+            // Generate image file names based on the total number of images
+            const imageFileNames = generateImageFileNames(totalImages);
+            console.log("Generated image file names:", imageFileNames); // Debugging statement
+
+            // Call function to display images
+            displayImages(imageFileNames.map(fileName => `${path}/${fileName}`));
+        </script>
     </div>
 
 </body>

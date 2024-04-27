@@ -1,44 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Papers</title>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
+
 <body class="bg-gray-100 font-sans">
+    <script>
 
-<div class="container mx-auto p-8 overflow-x-hidden">
-    <h1 class="text-3xl font-bold text-center mb-8">Question Papers</h1>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+            console.log("JavaScript loaded");
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white shadow-md rounded-md p-4">
-            <a href="english.pdf" class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">English(Coming soon..)</a>
-            <p class="text-gray-600">Download English question papers.</p>
+            // Add event listener to the menu button
+            menuBtn.addEventListener("click", function () {
+                console.log("Menu button clicked"); // Log a message to the console
+                // Toggle the visibility of the navigation links
+                navLinks.classList.toggle("hidden");
+            });
+
+
+        });
+    </script>
+
+<div id="navbar-placeholder">
+    <nav class="bg-gray-800 p-4 flex">
+        <div class="container mx-auto ">
+            <div class="flex justify-between items-center">
+
+                <a href="/" class="text-white text-xl font-semibold">Website for question papers</a>
+
+                <!-- Menu button for mobile -->
+                <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+
+            <ul id="nav-links" class="hidden flex flex-col items-end">
+                <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">English Papers</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Assamese Papers</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Chemistry Papers</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Physics Papers</a></li>
+                <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other Papers</a></li>
+            </ul>
         </div>
-        <div class="bg-white shadow-md rounded-md p-4">
-            <a href="assamese.pdf" class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Assamese(Coming soon..)</a>
-            <p class="text-gray-600">Download Assamese question papers.</p>
-        </div>
-        <div class="bg-white shadow-md rounded-md p-4">
-            <a href="maths.pdf" class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Maths(Coming soon..)</a>
-            <p class="text-gray-600">Download Maths question papers.</p>
-        </div>
-        <div class="bg-white shadow-md rounded-md p-4">
-            <a href="physics.pdf" class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Physics(Coming soon..)</a>
-            <p class="text-gray-600">Download Physics question papers.</p>
-        </div>
-        <div class="bg-white shadow-md rounded-md p-4">
-            <a href="chemistry.pdf" class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Chemistry(Coming soon..)</a>
-            <p class="text-gray-600">Download Chemistry question papers.</p>
-        </div>
-        <div class="bg-white shadow-md rounded-md p-4">
-            <a href="other_exams/index.html" class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Other papers</a>
-            <p class="text-gray-600">Download Other papers</p>
+        <ul id="nav-links-desktop" class="hidden md:flex flex-col md:flex-row md:space-x-4">
+            <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">English</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Assamese</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Chemistry</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Physics</a></li>
+            <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other</a></li>
+        </ul>
+
+    </nav>
+</div>
+    <div class="container mx-auto p-8 overflow-x-hidden">
+        <h1 class="text-3xl font-bold text-center mb-8">Question Papers</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white shadow-md rounded-md p-4">
+                <a href="comingsoon.html"
+                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">English(Coming
+                    soon..)</a>
+                <p class="text-gray-600">Download English question papers.</p>
+            </div>
+            <div class="bg-white shadow-md rounded-md p-4">
+                <a href="comingsoon.html"
+                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Assamese(Coming
+                    soon..)</a>
+                <p class="text-gray-600">Download Assamese question papers.</p>
+            </div>
+            <div class="bg-white shadow-md rounded-md p-4">
+                <a href="/comingsoon.html"
+                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Maths(Coming
+                    soon..)</a>
+                <p class="text-gray-600">Download Maths question papers.</p>
+            </div>
+            <div class="bg-white shadow-md rounded-md p-4">
+                <a href="comingsoon.html"
+                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Physics(Coming
+                    soon..)</a>
+                <p class="text-gray-600">Download Physics question papers.</p>
+            </div>
+            <div class="bg-white shadow-md rounded-md p-4">
+                <a href="comingsoon.html"
+                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Chemistry(Coming
+                    soon..)</a>
+                <p class="text-gray-600">Download Chemistry question papers.</p>
+            </div>
+            <div class="bg-white shadow-md rounded-md p-4">
+                <a href="other_exams/index.html"
+                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Other
+                    papers</a>
+                <p class="text-gray-600">Download Other papers</p>
+            </div>
         </div>
     </div>
-</div>
 
 </body>
+
 </html>
