@@ -19,37 +19,55 @@
 
 <body class="font-sans">
 
-    <nav class="bg-gray-800 p-4">
+    <nav class="bg-gray-800 p-4 flex">
         <div class="container mx-auto ">
             <div class="flex justify-between items-center">
 
                 <a href="/" class="text-white text-xl font-semibold">Website for question papers</a>
-                
+
                 <!-- Menu button for mobile -->
                 <button id="menu-btn" class="md:hidden text-white focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
-        </div>
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
 
-            <ul id="nav-links-desktop" class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">Home</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">About</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">Services</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">Contact</a></li>
-            </ul>
+
             <ul id="nav-links" class="hidden flex flex-col items-end">
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">Home</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">About</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">Services</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300 my-5">Contact</a></li>
+                <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">English Papers</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Assamese Papers</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Chemistry Papers</a></li>
+                <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Physics Papers</a></li>
+                <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other Papers</a></li>
             </ul>
         </div>
+        <ul id="nav-links-desktop" class="hidden md:flex flex-col md:flex-row md:space-x-4">
+            <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">English</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Assamese</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Chemistry</a></li>
+            <li><a href="/comingsoon.html" class="text-white hover:text-gray-300">Physics</a></li>
+            <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other</a></li>
+        </ul>
+
     </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+            console.log(menuBtn)
+            // Add event listener to the menu button
+            menuBtn.addEventListener("click", function () {
+                // Toggle the visibility of the navigation links
+                navLinks.classList.toggle("hidden");
+            });
+        });
+    </script>
 </body>
 
 </html>

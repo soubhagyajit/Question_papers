@@ -7,65 +7,24 @@
     <title>View Question Paper</title>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        fetch('/navbar.html') // Adjusted URL to /navbar.html
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-placeholder').innerHTML = html;
+            })
+            .catch(error => console.error('Error fetching navbar:', error));
+    </script>
+    <script src="/script.js"></script>
 </head>
 
 <body class="bg-gray-100 font-sans">
     
-    <div id="navbar-placeholder">
-        <nav class="bg-gray-800 p-4 flex">
-            <div class="container mx-auto ">
-                <div class="flex justify-between items-center">
-
-                    <a href="/" class="text-white text-xl font-semibold">Website for question papers</a>
-
-                    <!-- Menu button for mobile -->
-                    <button id="menu-btn" class="md:hidden text-white focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-
-
-                <ul id="nav-links" class="hidden flex flex-col items-end">
-                    <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">English Papers</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Assamese Papers</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Chemistry Papers</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Physics Papers</a></li>
-                    <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other Papers</a></li>
-                </ul>
-            </div>
-            <ul id="nav-links-desktop" class="hidden md:flex flex-col md:flex-row md:space-x-4">
-                <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">English</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">Assamese</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">Chemistry</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">Physics</a></li>
-                <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other</a></li>
-            </ul>
-
-        </nav>
-    </div>
-    
-    <!-- Include JavaScript for navbar -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const menuBtn = document.getElementById("menu-btn");
-            const navLinks = document.getElementById("nav-links");
-
-            // Add event listener to the menu button
-            menuBtn.addEventListener("click", function () {
-                // Toggle the visibility of the navigation links
-                navLinks.classList.toggle("hidden");
-            });
-        });
-    </script>
+    <div id="navbar-placeholder"></div>
     <div class="container mx-auto py-8">
         <h1 class="text-3xl font-bold text-center mb-8">View Question Paper</h1>
+        <p class="text-gray-600 text-center">Hi Banyakhi Please read carefully!</p>
+        <p class="text-gray-600 text-center mx-2 mb-8">You can zoom the pictures as normal picture as you used to do in gallery app</p>
 
         <div id="image-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8"></div>
 
@@ -94,7 +53,7 @@
                 images.forEach(image => {
                     // Create a div element for each image
                     const div = document.createElement("div");
-                    div.classList.add("bg-white", "shadow-md", "rounded-md", "p-4");
+                    div.classList.add("bg-white", "shadow-md", "rounded-md", "p-2");
 
                     // Create an img element for the image
                     const img = document.createElement("img");
@@ -113,12 +72,12 @@
             // Get the path and totalImages from the URL query parameters
             const path = getQueryParam("path");
             const totalImages = parseInt(getQueryParam("totalImages")) || 0; // Default to 0 if totalImages parameter is not provided
-            console.log("Path from URL:", path); // Debugging statement
-            console.log("Total images from URL:", totalImages); // Debugging statement
+            // console.log("Path from URL:", path); // Debugging statement
+            // console.log("Total images from URL:", totalImages); // Debugging statement
 
             // Generate image file names based on the total number of images
             const imageFileNames = generateImageFileNames(totalImages);
-            console.log("Generated image file names:", imageFileNames); // Debugging statement
+            // console.log("Generated image file names:", imageFileNames); // Debugging statement
 
             // Call function to display images
             displayImages(imageFileNames.map(fileName => `${path}/${fileName}`));

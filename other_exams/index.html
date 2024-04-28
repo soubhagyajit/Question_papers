@@ -7,66 +7,25 @@
     <title>Other Question Papers</title>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        fetch('/navbar.html') // Adjusted URL to /navbar.html
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-placeholder').innerHTML = html;
+            })
+            .catch(error => console.error('Error fetching navbar:', error));
+    </script>
+    <script src="/script.js"></script>
 </head>
 
 <body class="bg-gray-100 font-sans">
     <!-- Navbar HTML -->
-    <div id="navbar-placeholder">
-        <nav class="bg-gray-800 p-4 flex">
-            <div class="container mx-auto ">
-                <div class="flex justify-between items-center">
-
-                    <a href="/" class="text-white text-xl font-semibold">Website for question papers</a>
-
-                    <!-- Menu button for mobile -->
-                    <button id="menu-btn" class="md:hidden text-white focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-
-
-                <ul id="nav-links" class="hidden flex flex-col items-end">
-                    <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">English Papers</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Assamese Papers</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Chemistry Papers</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Physics Papers</a></li>
-                    <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other Papers</a></li>
-                </ul>
-            </div>
-            <ul id="nav-links-desktop" class="hidden md:flex flex-col md:flex-row md:space-x-4">
-                <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">English</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">Assamese</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">Chemistry</a></li>
-                <li><a href="#" class="text-white hover:text-gray-300">Physics</a></li>
-                <li><a href="/other_exams/index.html" class="text-white hover:text-gray-300">Other</a></li>
-            </ul>
-
-        </nav>
-    </div>
-
-    <!-- Include JavaScript for navbar -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const menuBtn = document.getElementById("menu-btn");
-            const navLinks = document.getElementById("nav-links");
-
-            // Add event listener to the menu button
-            menuBtn.addEventListener("click", function () {
-                // Toggle the visibility of the navigation links
-                navLinks.classList.toggle("hidden");
-            });
-        });
-    </script>
+    <div id="navbar-placeholder"></div>
 
     <div class="container mx-auto p-8 overflow-x-hidden">
         <h1 class="text-3xl font-bold text-center mb-8">Other Question Papers</h1>
+        <p class="text-gray-600 text-center">Hi Banyakhi</p>
+        <p class="text-gray-600 text-center mb-8">Choose one of the below</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="bg-white shadow-md rounded-md p-4">
