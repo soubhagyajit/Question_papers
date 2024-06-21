@@ -27,6 +27,9 @@
             display: block;
             margin: 0 auto;
             margin-bottom: 20px;
+            width: 97vw; /* Set width to 97% of viewport width */
+            height: auto; /* Automatically adjust height to maintain aspect ratio */
+            max-width: 100%; /* Ensure it doesn't exceed the viewport width */
         }
     </style>
 </head>
@@ -49,40 +52,37 @@
             }
 
             // Function to render a single page
-            function renderPage(page, container, desiredWidth) {
-                const viewport = page.getViewport({ scale: 1 });
-                const scale = desiredWidth / viewport.width;
-                const scaledViewport = page.getViewport({ scale: scale });
-
+            function renderPage(page, container) {
+                const viewport = page.getViewport({ scale: 2 }); // Increase the scale to improve quality
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
-                canvas.height = scaledViewport.height;
-                canvas.width = scaledViewport.width;
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
 
                 container.appendChild(canvas);
 
                 // Render PDF page into canvas context
                 const renderContext = {
                     canvasContext: context,
-                    viewport: scaledViewport
+                    viewport: viewport
                 };
                 page.render(renderContext);
             }
 
             // Function to render all pages
-            function renderAllPages(pdf, container, desiredWidth) {
+            function renderAllPages(pdf, container) {
                 for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-                    pdf.getPage(pageNumber).then(page => renderPage(page, container, desiredWidth));
+                    pdf.getPage(pageNumber).then(page => renderPage(page, container));
                 }
             }
 
             // Function to render PDF
-            function renderPDF(url, desiredWidth) {
+            function renderPDF(url) {
                 const container = document.getElementById('pdf-container');
 
                 // Asynchronous download of PDF
                 pdfjsLib.getDocument(url).promise.then(pdf => {
-                    renderAllPages(pdf, container, desiredWidth);
+                    renderAllPages(pdf, container);
                 });
             }
 
@@ -93,22 +93,10 @@
             // Ensure both path and pdfName are defined
             if (path && pdfName) {
                 const pdfPath = `${path}/${pdfName}`; // Construct the full path to the PDF
-                const desiredWidth = window.innerWidth * 0.97; // Set the desired width to 97% of the viewport width
-                renderPDF(pdfPath, desiredWidth);
+                renderPDF(pdfPath);
             } else {
                 console.error('Path or pdfName parameter is missing in the URL.');
             }
-
-            // Handle window resize to update PDF rendering
-            window.addEventListener('resize', () => {
-                const pdfContainer = document.getElementById('pdf-container');
-                pdfContainer.innerHTML = ''; // Clear the existing rendering
-                const desiredWidth = window.innerWidth * 0.97; // Recalculate desired width
-                if (path && pdfName) {
-                    const pdfPath = `${path}/${pdfName}`;
-                    renderPDF(pdfPath, desiredWidth);
-                }
-            });
         </script>
     </div>
 </body>
