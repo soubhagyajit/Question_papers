@@ -7,6 +7,8 @@
     <title>View Question Paper</title>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
     <script>
         fetch('/navbar.html')
             .then(response => response.text())
@@ -16,25 +18,72 @@
             .catch(error => console.error('Error fetching navbar:', error));
     </script>
     <script src="/script.js"></script>
+    <style>
+        #pdf-container {
+            height: 100vh;
+            overflow: auto;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 font-sans">
     <div id="navbar-placeholder"></div>
     <div class="container mx-auto py-8">
         <h1 class="text-3xl font-bold text-center mb-8">View Question Paper</h1>
-        <p class="text-gray-600 text-center">Hi ! Please read carefully!</p>
+        <p class="text-gray-600 text-center">Hi! Please read carefully!</p>
         <p class="text-gray-600 text-center mx-2 mb-8">You can zoom the pictures as normal picture as you used to do in gallery app</p>
 
-        <!-- PDF container using an iframe -->
-        <div id="pdf-container" class="w-full h-screen border-2 border-gray-300">
-            <iframe id="pdf-viewer" class="w-full h-full" frameborder="0"></iframe>
-        </div>
+        <!-- PDF container using PDF.js -->
+        <div id="pdf-container" class="border-2 border-gray-300"></div>
 
         <script>
             // Function to extract query parameter from URL
             function getQueryParam(param) {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get(param);
+            }
+
+            // Function to render a single page
+            function renderPage(page, container, desiredWidth) {
+                const viewport = page.getViewport({ scale: 1 });
+                const scale = desiredWidth / viewport.width;
+                const scaledViewport = page.getViewport({ scale: scale });
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = scaledViewport.height;
+                canvas.width = scaledViewport.width;
+
+                container.appendChild(canvas);
+
+                // Render PDF page into canvas context
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: scaledViewport
+                };
+                page.render(renderContext);
+            }
+
+            // Function to render all pages
+            function renderAllPages(pdf, container, desiredWidth) {
+                for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+                    pdf.getPage(pageNumber).then(page => renderPage(page, container, desiredWidth));
+                }
+            }
+
+            // Function to render PDF
+            function renderPDF(url, desiredWidth) {
+                const container = document.getElementById('pdf-container');
+
+                // Asynchronous download of PDF
+                pdfjsLib.getDocument(url).promise.then(pdf => {
+                    renderAllPages(pdf, container, desiredWidth);
+                });
             }
 
             // Get the path and pdfName from the URL query parameters
@@ -44,10 +93,22 @@
             // Ensure both path and pdfName are defined
             if (path && pdfName) {
                 const pdfPath = `${path}/${pdfName}`; // Construct the full path to the PDF
-                document.getElementById('pdf-viewer').src = pdfPath;
+                const desiredWidth = window.innerWidth * 0.97; // Set the desired width to 97% of the viewport width
+                renderPDF(pdfPath, desiredWidth);
             } else {
                 console.error('Path or pdfName parameter is missing in the URL.');
             }
+
+            // Handle window resize to update PDF rendering
+            window.addEventListener('resize', () => {
+                const pdfContainer = document.getElementById('pdf-container');
+                pdfContainer.innerHTML = ''; // Clear the existing rendering
+                const desiredWidth = window.innerWidth * 0.97; // Recalculate desired width
+                if (path && pdfName) {
+                    const pdfPath = `${path}/${pdfName}`;
+                    renderPDF(pdfPath, desiredWidth);
+                }
+            });
         </script>
     </div>
 </body>
