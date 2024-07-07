@@ -13,18 +13,38 @@
             width: 1.5rem;
             height: 1.5rem;
         }
+
+        /* Modal styles */
+        .modal {
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background-color: rgba(175, 175, 175, 0.493);
+            backdrop-filter: blur(5px);
+            display: none;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+        }
     </style>
-    
+
 </head>
 
 <body class="font-sans">
-
     <nav class="bg-gray-800 p-4 flex">
-        <div class="container mx-auto ">
+        <div class="container mx-auto">
             <div class="flex justify-between items-center">
-
                 <a href="/" class="text-white text-xl font-semibold">Website for question papers</a>
-
                 <!-- Menu button for mobile -->
                 <button id="menu-btn" class="flex md:hidden text-white focus:outline-none">
                     Menu
@@ -36,7 +56,6 @@
                     </svg>
                 </button>
             </div>
-
 
             <ul id="nav-links" class="hidden flex flex-col items-end">
                 <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
@@ -54,24 +73,21 @@
             <li><a href="/assamese/" class="text-white hover:text-gray-300">Assamese</a></li>
             <li><a href="/chemistry/" class="text-white hover:text-gray-300">Chemistry</a></li>
             <li><a href="/maths/" class="text-white hover:text-gray-300">Mathematics</a></li>
-                <li><a href="/physics/" class="text-white hover:text-gray-300">Physics</a></li>
+            <li><a href="/physics/" class="text-white hover:text-gray-300">Physics</a></li>
             <li><a href="/other_exams/" class="text-white hover:text-gray-300">Other</a></li>
         </ul>
-
     </nav>
-    <iframe src="/auth.html" class="fixed h-full w-full z-30"></iframe>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const menuBtn = document.getElementById("menu-btn");
-            const navLinks = document.getElementById("nav-links");
-            console.log(menuBtn)
-            // Add event listener to the menu button
-            menuBtn.addEventListener("click", function () {
-                // Toggle the visibility of the navigation links
-                navLinks.classList.toggle("hidden");
-            });
-        });
-    </script>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <form id="auth-form">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                <input type="password" id="password" class="border p-2 w-full" required>
+                <button type="submit" class="bg-blue-500 text-white p-2 mt-2 w-full">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
