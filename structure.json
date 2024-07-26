@@ -1,0 +1,34 @@
+{
+    "folders": [
+        {
+            "subject": "English",
+            "path": "/english",
+            "description": "English question papers.",
+            "isNew": true
+        },
+        {
+            "subject": "Physics",
+            "path": "/physics",
+            "description": "Physics question papers.",
+            "isNew": true
+        },
+        {
+            "subject": "Chemistry",
+            "path": "/chemistry",
+            "description": "Chemistry question papers.",
+            "isNew": true
+        },
+        {
+            "subject": "Mathematics",
+            "path": "/maths",
+            "description": "Mathematics question papers.",
+            "isNew": true
+        },
+        {
+            "subject": "Assamese",
+            "path": "/assamese",
+            "description": "Assamese question papers.",
+            "isNew": true
+        }
+    ]
+}

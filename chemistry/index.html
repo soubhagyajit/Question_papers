@@ -8,32 +8,70 @@
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script>
-        fetch('/navbar.html') // Adjusted URL to /navbar.html
+        fetch('/navbar.html')
             .then(response => response.text())
             .then(html => {
                 document.getElementById('navbar-placeholder').innerHTML = html;
             })
             .catch(error => console.error('Error fetching navbar:', error));
+
+        // Function to create cards dynamically
+        function createCards(folders, subject) {
+            const container = document.querySelector('.grid');
+            container.innerHTML = ''; // Clear any existing cards
+
+            folders
+                .filter(folder => folder.subject === subject)
+                .forEach(folder => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-indigo-200 shadow-md rounded-md p-4';
+
+                    const link = document.createElement('a');
+                    link.href = `/view.html?path=${folder.path}&pdfName=${folder.pdfName}`;
+                    link.className = 'block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300';
+                    link.textContent = `${folder.name} (${folder.date})`;
+
+                    if (folder.isNew) {
+                        const img = document.createElement('img');
+                        img.src = '/assets/New.gif';
+                        img.className = 'h-6 w-6 inline absolute';
+                        img.alt = 'New';
+                        link.appendChild(img);
+                    }
+
+                    const description = document.createElement('p');
+                    description.className = 'text-gray-600';
+                    description.textContent = 'View ' + subject + ' paper';
+
+                    card.appendChild(link);
+                    card.appendChild(description);
+
+                    container.appendChild(card);
+                });
+        }
+
+        // Fetch the folders JSON and create cards for the Chemistry subject
+        fetch('/folders.json')
+            .then(response => response.json())
+            .then(data => {
+                createCards(data, 'Chemistry');
+            })
+            .catch(error => console.error('Error fetching folders:', error));
     </script>
     <script src="/script.js"></script>
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-900 font-sans">
     <!-- Navbar HTML -->
     <div id="navbar-placeholder"></div>
 
     <div class="container mx-auto p-8 overflow-x-hidden">
-        <h1 class="text-3xl font-bold text-center mb-8">Chemistry Question Papers</h1>
+        <h1 class="text-3xl font-bold text-center mb-8 text-white text-white">Chemistry Question Papers</h1>
         <p class="text-gray-600 text-center">Hi !</p>
         <p class="text-gray-600 text-center mb-8">Choose one of the below</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-white shadow-md rounded-md p-4">
-                <a href="/view.html?path=/chemistry/unit1&pdfName=chem_test1.pdf"
-                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300"> Test - 1(24-5-2024)</a>
-                <p class="text-gray-600">View Chemistry paper</p>
-            </div>
-            
+            <!-- Cards will be injected here by JavaScript -->
         </div>
     </div>
 
