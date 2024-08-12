@@ -34,7 +34,7 @@
             "subject": "More questions",
             "path": "/other_exams",
             "description": "More question papers.",
-            "isNew": false
+            "isNew": true
         }
     ]
 }

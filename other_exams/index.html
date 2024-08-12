@@ -16,38 +16,39 @@
             .catch(error => console.error('Error fetching navbar:', error));
     </script>
     <script src="/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('structure.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('folders-container');
+                    data.folders.forEach(folder => {
+                        const a = document.createElement('a');
+                        a.classList.add('bg-indigo-200', 'shadow-md', 'rounded-md', 'p-4', 'm-4', 'relative');
+                        a.setAttribute('href',folder.path);
+                        // Check if the folder is new
+                        const newTag = folder.isNew ? '<img src="/assets/New.gif" class="inline top-2 right-2 h-6 w-6" alt="New">' : '';
+                        
+                        a.innerHTML = `
+                            <h2 class="text-xl font-bold mb-2">${folder.subject}${newTag}</h2>
+                            <p class="text-gray-600 mb-4">${folder.description}</p>                            
+                        `;
+                        container.appendChild(a);
+                    });
+                })
+                .catch(error => console.error('Error fetching folder data:', error));
+        });
+    </script>
 </head>
 
 <body class="bg-gray-900 font-sans">
-    <!-- Navbar HTML -->
     <div id="navbar-placeholder"></div>
-
-    <div class="container mx-auto p-8 overflow-x-hidden">
-        <h1 class="text-3xl font-bold text-center mb-8 text-white text-white">Other Question Papers</h1>
-        <p class="text-gray-600 text-center">Hi !</p>
-        <p class="text-gray-600 text-center mb-8">Choose one of the below</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-indigo-200 shadow-md rounded-md p-4">
-                <a href="/view.html?path=/other_exams/organic&pdfName=organic.pdf"
-                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Organic</a>
-                <p class="text-gray-600">View Organic question paper (Class 11)</p>
-            </div>
-            <div class="bg-indigo-200 shadow-md rounded-md p-4">
-                <a href="/view.html?path=/other_exams/literature&pdfName=literature.pdf"
-                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Literature</a>
-                <p class="text-gray-600">View literature question paper</p>
-            </div>
-            <div class="bg-indigo-200 shadow-md rounded-md p-4">
-                <a href="/mocktest/index.html"
-                    class="block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300">Mock test Papers
-                    <!-- <img src="/assets/New.gif" class="h-6 w-6 inline absolute " alt="New"> -->
-                </a>
-                <p class="text-gray-600">View Mock test Papers</p>
-            </div>
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold text-center mb-8 text-white">Other Question Papers</h1>
+        <div id="folders-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Folders will be dynamically inserted here -->
         </div>
     </div>
-
 </body>
 
 </html>

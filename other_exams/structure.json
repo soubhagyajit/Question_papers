@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "subject": "Literature",
+      "path": "/view.html?path=/other_exams/literature&pdfName=literature.pdf",
+      "description": "Literature Question paper.",
+      "isNew": false
+    },
+    {
+      "subject": "Organic",
+      "path": "/view.html?path=/other_exams/organic&pdfName=organic.pdf",
+      "description": "Organic Question paper.",
+      "isNew": false
+    },
+    {
+      "subject": "Mock Test Papers",
+      "path": "/mocktest",
+      "description": "Mock Test Question paper.",
+      "isNew": true
+    }
+    
+  ]
+}
