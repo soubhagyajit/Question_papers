@@ -30,7 +30,7 @@
                         const newTag = folder.isNew ? '<img src="/assets/New.gif" class="inline top-2 right-2 h-6 w-6" alt="New">' : '';
                         
                         a.innerHTML = `
-                            <h2 class="text-xl font-bold mb-2">${folder.subject}${newTag}</h2>
+                            <h2 class="text-xl font-bold mb-2 text-blue-700">${folder.subject}${newTag}</h2>
                             <p class="text-gray-600 mb-4">${folder.description}</p>                            
                         `;
                         container.appendChild(a);
