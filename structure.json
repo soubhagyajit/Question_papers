@@ -31,6 +31,12 @@
             "isNew": false
         },
         {
+            "subject": "Practice Papers",
+            "path": "/comingsoon.html",
+            "description": "Coming Soon...",
+            "isNew": true
+        },
+        {
             "subject": "More questions",
             "path": "/other_exams",
             "description": "More question papers.",

@@ -22,5 +22,6 @@
   { "subject": "Mock test", "name": "Mock test - 10", "date": "6-8-2024", "path": "/mocktest/mock10", "pdfName": "mock10.pdf", "isNew": false },  
   { "subject": "Mock test", "name": "Mock test - 11", "date": "13-8-2024", "path": "/mocktest/mock11", "pdfName": "mock11.pdf", "isNew": false },  
   { "subject": "Mock test", "name": "Mock test - 12", "date": "20-8-2024", "path": "/mocktest/mock12", "pdfName": "mock12.pdf", "isNew": false },  
-  { "subject": "Mock test", "name": "Mock test - 13", "date": "20-8-2024", "path": "/mocktest/mock13", "pdfName": "mock13.pdf", "isNew": true }  
+  { "subject": "Mock test", "name": "Mock test - 13", "date": "20-8-2024", "path": "/mocktest/mock13", "pdfName": "mock13.pdf", "isNew": false },  
+  { "subject": "Mock test", "name": "Mock test - 15", "date": "17-9-2024", "path": "/mocktest/mock15", "pdfName": "mock15.pdf", "isNew": true }  
 ]
