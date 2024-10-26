@@ -4,43 +4,43 @@
             "subject": "English",
             "path": "/english",
             "description": "English question papers.",
-            "isNew": false
+            "isNew": true
         },
         {
             "subject": "Physics",
             "path": "/physics",
             "description": "Physics question papers.",
-            "isNew": false
+            "isNew": true
         },
         {
             "subject": "Chemistry",
             "path": "/chemistry",
             "description": "Chemistry question papers.",
-            "isNew": false
+            "isNew": true
         },
         {
             "subject": "Mathematics",
             "path": "/maths",
             "description": "Mathematics question papers.",
-            "isNew": false
+            "isNew": true
         },
         {
             "subject": "Assamese",
             "path": "/assamese",
             "description": "Assamese question papers.",
-            "isNew": false
+            "isNew": true
         },
         {
             "subject": "Practice Papers",
             "path": "/comingsoon.html",
             "description": "Coming Soon...",
-            "isNew": true
+            "isNew": false
         },
         {
             "subject": "More questions",
             "path": "/other_exams",
             "description": "More question papers.",
-            "isNew": true
+            "isNew": false
         }
     ]
 }

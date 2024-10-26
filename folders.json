@@ -11,6 +11,12 @@
   { "subject": "Physics", "name": "Test - 2", "date": "23-7-2024", "path": "/physics/unit2", "pdfName": "unit2.pdf", "isNew": false },
   { "subject": "Assamese", "name": "Test - 2", "date": "24-7-2024", "path": "/assamese/unit2", "pdfName": "unit2.pdf", "isNew": false },
 
+  { "subject": "English", "name": "Prefinal-1", "date": "16-7-2024", "path": "/english/prefinal/1/", "pdfName": "english-prefinal-1.pdf", "isNew": true },
+  { "subject": "Chemistry", "name": "Prefinal-1", "date": "18-7-2024", "path": "/chemistry/prefinal/1/", "pdfName": "chemistry-prefinal-1.pdf", "isNew": true },
+  { "subject": "Maths", "name": "Prefinal-1", "date": "20-7-2024", "path": "/maths/prefinal/1/", "pdfName": "maths-prefinal-1.pdf", "isNew": true },
+  { "subject": "Physics", "name": "Prefinal-1", "date": "23-7-2024", "path": "/physics/prefinal/1/", "pdfName": "physics-prefinal-1.pdf", "isNew": true },
+  { "subject": "Assamese", "name": "Prefinal-1", "date": "24-7-2024", "path": "/assamese/prefinal/1/", "pdfName": "assamese-prefinal-1.pdf", "isNew": true },
+
   { "subject": "Mock test", "name": "Mock test - 1", "date": "30-4-2024", "path": "/mocktest/mock1", "pdfName": "mock1.pdf", "isNew": false },
   { "subject": "Mock test", "name": "Mock test - 2", "date": "7-5-2024", "path": "/mocktest/mock2", "pdfName": "mock2.pdf", "isNew": false },
   { "subject": "Mock test", "name": "Mock test - 3", "date": "14-5-2024", "path": "/mocktest/mock3", "pdfName": "mock3.pdf", "isNew": false },
@@ -25,5 +31,5 @@
   { "subject": "Mock test", "name": "Mock test - 13", "date": "20-8-2024", "path": "/mocktest/mock13", "pdfName": "mock13.pdf", "isNew": false },  
   { "subject": "Mock test", "name": "Mock test - 15", "date": "17-9-2024", "path": "/mocktest/mock15", "pdfName": "mock15.pdf", "isNew": false },  
   { "subject": "Mock test", "name": "Mock test - 16", "date": "24-9-2024", "path": "/mocktest/mock16", "pdfName": "mock16.pdf", "isNew": false },  
-  { "subject": "Mock test", "name": "Mock test - 17", "date": "01-10-2024", "path": "/mocktest/mock17", "pdfName": "mock17.pdf", "isNew": true }  
+  { "subject": "Mock test", "name": "Mock test - 17", "date": "01-10-2024", "path": "/mocktest/mock17", "pdfName": "mock17.pdf", "isNew": false }  
 ]
