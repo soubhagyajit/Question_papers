@@ -1,104 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Question Paper</title>
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
     <!-- Include Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <!-- Include PDF.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
     <script>
-        fetch('/navbar.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-placeholder').innerHTML = html;
-            })
-            .catch(error => console.error('Error fetching navbar:', error));
+      fetch("/navbar.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.getElementById("navbar-placeholder").innerHTML = html;
+        })
+        .catch((error) => console.error("Error fetching navbar:", error));
+      fetch("/footer.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.getElementById("footer-placeholder").innerHTML = html;
+        })
+        .catch((error) => console.error("Error fetching navbar:", error));
     </script>
     <script src="/script.js"></script>
     <style>
-        #pdf-container {
-            height: 100vh;
-            overflow: auto;
-        }
-        canvas {
-            display: block;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            width: 97vw; /* Set width to 97% of viewport width */
-            height: auto; /* Automatically adjust height to maintain aspect ratio */
-            max-width: 100%; /* Ensure it doesn't exceed the viewport width */
-        }
+      #pdf-container {
+        height: 100vh;
+        overflow: auto;
+      }
+      canvas {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: 97vw; /* Set width to 97% of viewport width */
+        height: auto; /* Automatically adjust height to maintain aspect ratio */
+        max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-gray-900 font-sans">
+  <body class="bg-gray-900 font-sans">
     <div id="navbar-placeholder"></div>
     <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-bold text-center mb-8 text-white text-white">View Question Paper</h1>
-        <p class="text-gray-600 text-center">Hi! Please read carefully!</p>
-        <p class="text-gray-600 text-center mx-2 mb-8">You can zoom the pictures as normal picture as you used to do in gallery app</p>
+      <h1 class="text-3xl font-bold text-center mb-8 text-white text-white">
+        View Question Paper
+      </h1>
+      <p class="text-gray-600 text-center">Hi! Please read carefully!</p>
+      <p class="text-gray-600 text-center mx-2 mb-8">
+        You can zoom the pictures as normal picture as you used to do in gallery
+        app
+      </p>
 
-        <!-- PDF container using PDF.js -->
-        <div id="pdf-container" class="border-2 border-gray-300"></div>
+      <!-- PDF container using PDF.js -->
+      <div id="pdf-container" class="border-2 border-gray-300"></div>
 
-        <script>
-            // Function to extract query parameter from URL
-            function getQueryParam(param) {
-                const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get(param);
-            }
+      <script>
+        // Function to extract query parameter from URL
+        function getQueryParam(param) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+        }
 
-            // Function to render a single page
-            function renderPage(page, container) {
-                const viewport = page.getViewport({ scale: 2 }); // Increase the scale to improve quality
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+        // Function to render a single page
+        function renderPage(page, container) {
+          const viewport = page.getViewport({ scale: 2 }); // Increase the scale to improve quality
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
 
-                container.appendChild(canvas);
+          container.appendChild(canvas);
 
-                // Render PDF page into canvas context
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-            }
+          // Render PDF page into canvas context
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+          };
+          page.render(renderContext);
+        }
 
-            // Function to render all pages
-            function renderAllPages(pdf, container) {
-                for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-                    pdf.getPage(pageNumber).then(page => renderPage(page, container));
-                }
-            }
+        // Function to render all pages
+        function renderAllPages(pdf, container) {
+          for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+            pdf.getPage(pageNumber).then((page) => renderPage(page, container));
+          }
+        }
 
-            // Function to render PDF
-            function renderPDF(url) {
-                const container = document.getElementById('pdf-container');
+        // Function to render PDF
+        function renderPDF(url) {
+          const container = document.getElementById("pdf-container");
 
-                // Asynchronous download of PDF
-                pdfjsLib.getDocument(url).promise.then(pdf => {
-                    renderAllPages(pdf, container);
-                });
-            }
+          // Asynchronous download of PDF
+          pdfjsLib.getDocument(url).promise.then((pdf) => {
+            renderAllPages(pdf, container);
+          });
+        }
 
-            // Get the path and pdfName from the URL query parameters
-            const path = getQueryParam("path");
-            const pdfName = getQueryParam("pdfName");
+        // Get the path and pdfName from the URL query parameters
+        const path = getQueryParam("path");
+        const pdfName = getQueryParam("pdfName");
 
-            // Ensure both path and pdfName are defined
-            if (path && pdfName) {
-                const pdfPath = `${path}/${pdfName}`; // Construct the full path to the PDF
-                renderPDF(pdfPath);
-            } else {
-                console.error('Path or pdfName parameter is missing in the URL.');
-            }
-        </script>
+        // Ensure both path and pdfName are defined
+        if (path && pdfName) {
+          const pdfPath = `${path}/${pdfName}`; // Construct the full path to the PDF
+          renderPDF(pdfPath);
+        } else {
+          console.error("Path or pdfName parameter is missing in the URL.");
+        }
+      </script>
     </div>
-</body>
-
+    <div id="footer-placeholder"></div>
+  </body>
 </html>

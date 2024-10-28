@@ -14,6 +14,12 @@
                 document.getElementById('navbar-placeholder').innerHTML = html;
             })
             .catch(error => console.error('Error fetching navbar:', error));
+            fetch('/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-placeholder').innerHTML = html;
+            })
+            .catch(error => console.error('Error fetching navbar:', error));
 
         // Function to create cards dynamically
         function createCards(folders, subject) {
@@ -61,11 +67,11 @@
     <script src="/script.js"></script>
 </head>
 
-<body class="bg-gray-900 font-sans">
+<body class="bg-gray-900 font-sans flex flex-col min-h-screen">
     <!-- Navbar HTML -->
     <div id="navbar-placeholder"></div>
 
-    <div class="container mx-auto p-8 overflow-x-hidden">
+    <div class="container mx-auto p-8 overflow-x-hidden flex-grow">
         <h1 class="text-3xl font-bold text-center mb-8 text-white text-white">English Question Papers</h1>
         <p class="text-gray-600 text-center">Hi !</p>
         <p class="text-gray-600 text-center mb-8">Choose one of the below</p>
@@ -74,6 +80,7 @@
             <!-- Cards will be injected here by JavaScript -->
         </div>
     </div>
+    <div id="footer-placeholder"></div>
 
 </body>
 

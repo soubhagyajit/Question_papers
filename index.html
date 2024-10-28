@@ -1,54 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Question Papers</title>
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
     <!-- Include Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <script>
-        fetch('/navbar.html') // Adjusted URL to /navbar.html
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-placeholder').innerHTML = html;
-            })
-            .catch(error => console.error('Error fetching navbar:', error));
+      fetch("/navbar.html") // Adjusted URL to /navbar.html
+        .then((response) => response.text())
+        .then((html) => {
+          document.getElementById("navbar-placeholder").innerHTML = html;
+        })
+        .catch((error) => console.error("Error fetching navbar:", error));
+      fetch("/footer.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.getElementById("footer-placeholder").innerHTML = html;
+        })
+        .catch((error) => console.error("Error fetching navbar:", error));
     </script>
     <script src="/script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('/structure.json')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('folders-container');
-                    data.folders.forEach(folder => {
-                        const a = document.createElement('a');
-                        a.classList.add('bg-indigo-200', 'shadow-md', 'rounded-md', 'p-4', 'm-4', 'relative');
-                        a.setAttribute('href',folder.path);
-                        // Check if the folder is new
-                        const newTag = folder.isNew ? '<img src="/assets/New.gif" class="inline top-2 right-2 h-6 w-6" alt="New">' : '';
-                        
-                        a.innerHTML = `
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/structure.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const container = document.getElementById("folders-container");
+            data.folders.forEach((folder) => {
+              const a = document.createElement("a");
+              a.classList.add(
+                "bg-indigo-200",
+                "shadow-md",
+                "rounded-md",
+                "p-4",
+                "m-4",
+                "relative"
+              );
+              a.setAttribute("href", folder.path);
+              // Check if the folder is new
+              const newTag = folder.isNew
+                ? '<img src="/assets/New.gif" class="inline top-2 right-2 h-6 w-6" alt="New">'
+                : "";
+
+              a.innerHTML = `
                             <h2 class="text-xl font-bold mb-2 text-blue-700">${folder.subject}${newTag}</h2>
                             <p class="text-gray-600 mb-4">${folder.description}</p>                            
                         `;
-                        container.appendChild(a);
-                    });
-                })
-                .catch(error => console.error('Error fetching folder data:', error));
-        });
+              container.appendChild(a);
+            });
+          })
+          .catch((error) =>
+            console.error("Error fetching folder data:", error)
+          );
+      });
     </script>
-</head>
+  </head>
 
-<body class="bg-gray-900 font-sans">
+  <body class="bg-gray-900 font-sans flex flex-col min-h-screen">
     <div id="navbar-placeholder"></div>
-    <div class="container mx-auto p-8">
-        <h1 class="text-3xl font-bold text-center mb-8 text-white">Question Papers</h1>
-        <div id="folders-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Folders will be dynamically inserted here -->
-        </div>
+    <div class="container mx-auto p-8 overflow-x-hidden flex-grow">
+      <h1 class="text-3xl font-bold text-center mb-8 text-white">
+        Question Papers
+      </h1>
+      <div
+        id="folders-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
+        <!-- Folders will be dynamically inserted here -->
+      </div>
     </div>
-</body>
-
+    <div id="footer-placeholder"></div>
+  </body>
 </html>

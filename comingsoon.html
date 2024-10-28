@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon</title>
+    <link rel="icon" type="image/png" href="/assets/logo.png"/>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script>
@@ -12,6 +13,12 @@
             .then(response => response.text())
             .then(html => {
                 document.getElementById('navbar-placeholder').innerHTML = html;
+            })
+            .catch(error => console.error('Error fetching navbar:', error));
+        fetch('/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-placeholder').innerHTML = html;
             })
             .catch(error => console.error('Error fetching navbar:', error));
     </script>
@@ -115,17 +122,19 @@
     </style>
 </head>
 
-<body>
+<body class="bg-gray-900 font-sans flex flex-col min-h-screen">
     
     <!-- Navbar component -->
     <div id="navbar-placeholder"></div>
-    <div class="contain">
-        <h1>Coming Soon</h1>
-        <p class="text-gray-600 text-center">Sorry !</p>
-        <p>Question papers will available after I got the papers and attend the exams</p>
-        <a href="/" class="btn">Go to Home</a>
+    <div class="container mx-auto p-8 overflow-x-hidden flex-grow">
+        <h1 class="text-gray-200 text-center p-2">Coming Soon</h1>
+        <p class="text-gray-200 text-center p-2">Sorry !</p>
+        <p class="text-gray-200 text-center p-2">Wait untill I got the papers!</p>
+        <p class="text-gray-600 text-center p-2">
+            <a href="/" class="btn">Go to Home</a>
+        </p>
     </div>
-    
+    <div id="footer-placeholder"></div>
     <!-- <script>
         document.addEventListener("DOMContentLoaded", function () {
             const menuBtn = document.getElementById("menu-btn");
