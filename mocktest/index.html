@@ -35,7 +35,7 @@
                     card.className = 'bg-indigo-200 shadow-md rounded-md p-4';
 
                     const link = document.createElement('a');
-                    link.href = `/view.html?path=${folder.path}&pdfName=${folder.pdfName}`;
+                    link.href = `/view.html?path=${folder.path}&pdfName=${folder.pdfName}&exam=${folder.name}&subject=${folder.subject}`;
                     link.className = 'block text-lg font-semibold text-blue-600 hover:text-blue-700 transition duration-300';
                     link.textContent = `${folder.name} (${folder.date})`;
 

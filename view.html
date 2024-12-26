@@ -56,10 +56,17 @@
       </p>
 
       <!-- PDF container using PDF.js -->
-      <!-- <div id="pdf-details" class="flex justify-between text-gray-400 m-5 ">
-        <div>left</div>
-        <div>right</div>
-      </div> -->
+      <div id="pdf-details" class="flex justify-between text-gray-400 m-5">
+        <div><span id="subject">Subject</span>-<span id="exam">Exam</span></div>
+        <div>
+          <a id="Download" target="_blank" href=""
+            ><img
+              src="/assets/download-button.png"
+              class="inline top-2 right-2 h-6 w-6"
+              alt="Download PDF"
+          /></a>
+        </div>
+      </div>
       <div id="pdf-container" class="border-2 border-gray-300"></div>
 
       <script>
@@ -71,7 +78,7 @@
 
         // Function to render a single page
         function renderPage(page, container) {
-          const viewport = page.getViewport({ scale: 2 }); // Increase the scale to improve quality
+          const viewport = page.getViewport({ scale: 2 }); // Adjust scale for better quality
           const canvas = document.createElement("canvas");
           const context = canvas.getContext("2d");
           canvas.height = viewport.height;
@@ -89,9 +96,15 @@
 
         // Function to render all pages
         function renderAllPages(pdf, container) {
+          const loadingIndicator = document.createElement("p");
+          loadingIndicator.textContent = "Loading pages...";
+          loadingIndicator.className = "text-gray-400 text-center";
+          container.appendChild(loadingIndicator);
+
           for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
             pdf.getPage(pageNumber).then((page) => renderPage(page, container));
           }
+          container.removeChild(loadingIndicator); // Remove the loading indicator
         }
 
         // Function to render PDF
@@ -99,16 +112,31 @@
           const container = document.getElementById("pdf-container");
 
           // Asynchronous download of PDF
-          pdfjsLib.getDocument(url).promise.then((pdf) => {
-            renderAllPages(pdf, container);
-          });
+          pdfjsLib
+            .getDocument(url)
+            .promise.then((pdf) => {
+              renderAllPages(pdf, container);
+            })
+            .catch((error) => {
+              container.innerHTML = `<p class="text-red-500 text-center">Failed to load PDF. Please try again later.</p>`;
+              console.error("Error loading PDF:", error);
+            });
         }
 
         // Get the path and pdfName from the URL query parameters
         const path = getQueryParam("path");
         const pdfName = getQueryParam("pdfName");
+        const pdfSubject = getQueryParam("subject");
+        const pdfExam = getQueryParam("exam");
 
-        // Ensure both path and pdfName are defined
+        const DownloadBtn = document.getElementById("Download");
+        const subject = document.getElementById("subject");
+        const exam = document.getElementById("exam");
+
+        subject.textContent = pdfSubject || "Unknown Subject";
+        exam.textContent = pdfExam || "Unknown Exam";
+        DownloadBtn.href = path && pdfName ? `${path}/${pdfName}` : "#";
+
         if (path && pdfName) {
           const pdfPath = `${path}/${pdfName}`; // Construct the full path to the PDF
           renderPDF(pdfPath);
