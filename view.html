@@ -135,7 +135,7 @@
 
         subject.textContent = pdfSubject || "Unknown Subject";
         exam.textContent = pdfExam || "Unknown Exam";
-        DownloadBtn.href = path && pdfName ? `${path}/${pdfName}` : "#";
+        DownloadBtn.href = path && pdfName ? `${path}${pdfName}` : "/comingsoon.html";
 
         if (path && pdfName) {
           const pdfPath = `${path}/${pdfName}`; // Construct the full path to the PDF
