@@ -4,31 +4,31 @@
             "subject": "English",
             "path": "/english",
             "description": "English question papers.",
-            "isNew": true
+            "isNew": false
         },
         {
             "subject": "Physics",
             "path": "/physics",
             "description": "Physics question papers.",
-            "isNew": true
+            "isNew": false
         },
         {
             "subject": "Chemistry",
             "path": "/chemistry",
             "description": "Chemistry question papers.",
-            "isNew": true
+            "isNew": false
         },
         {
             "subject": "Mathematics",
             "path": "/maths",
             "description": "Mathematics question papers.",
-            "isNew": true
+            "isNew": false
         },
         {
             "subject": "Assamese",
             "path": "/assamese",
             "description": "Assamese question papers.",
-            "isNew": true
+            "isNew": false
         },
         {
             "subject": "Practice Papers",
